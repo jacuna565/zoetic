@@ -1,17 +1,22 @@
 import React from 'react';
 import {View, Text, Platform} from 'react-native';
-import { createDrawerNavigator, DrawerContentScrollView, DrawerItemList } from '@react-navigation/drawer';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
-import AppTabNavigator from '../AppTabNavigator';
+import { createDrawerNavigator, DrawerContentScrollView, DrawerItem, DrawerItemList } from '@react-navigation/drawer';
+import Icon from 'react-native-vector-icons/AntDesign';
+
+import DashboardStack from '../AppTabNavigator';
+import styles from './styles';
 
 const Drawer = createDrawerNavigator();
 
 const AppDrawerNavigator = (props) => {
     return (
-        <Drawer.Navigator initialRouteName='HomeStack'  drawerContent={props => <CustomDrawerContent {...props}/>}>
-            <Drawer.Screen name='HomeStack' component={AppTabNavigator}
+        <Drawer.Navigator initialRouteName='DashboardStack'  drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Screen name='DashboardStack' component={DashboardStack}
                 options={{
-                    drawerLabel: () => { return <View><Icon name="view-dashboard-outline"/><Text>Home</Text></View>}
+                    drawerLabel: () => { return <View style={styles.drawerLabelContainer}>
+                        <Icon style={styles.icon} name="barschart"/>
+                        <Text style={styles.drawerLabel}>Home</Text>
+                    </View>}
                 }} 
             />
         </Drawer.Navigator>
@@ -22,22 +27,23 @@ const AppDrawerNavigator = (props) => {
 const CustomDrawerContent = (props) => {
     return (
     <View>
-        <View>
+        <View style={{height:'100%'}}>
             <View>
-                <View>             
+                <View style={styles.drawerCloseContainer}>             
                     <Icon
                         onPress={() => props.navigation.closeDrawer()}
                         name="close"
                         size={32}
-                        color={'#ff00ff'}
+                        color={'#8b19be'}
                         style={{marginTop:(Platform.OS === 'ios') ? 25 : 0}}
                     /> 
                 </View>
             </View>
             <DrawerContentScrollView {...props}>
-                <DrawerItemList {...props} activeTintColor={'red'} activeBackgroundColor={'transparent'}/>
+                <DrawerItemList {...props} activeTintColor={'#8b19be'} />
             </DrawerContentScrollView>
-            <View style={{position:"absolute", bottom:10, right: 10}}><Text style={[{fontSize: 12}]}>Develop by: Jan Acuna</Text></View>
+            <View style={styles.drawerFooter}>
+                <Text style={styles.drawerFooterText}>Developed by: Jan Acuna</Text></View>
         </View>
     </View>)
 };

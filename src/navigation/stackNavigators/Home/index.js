@@ -3,7 +3,7 @@ import React from 'react';
 import { Platform, Text } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/MaterialCommunityIcons';
+import Icon from 'react-native-vector-icons/MaterialIcons';
 // import Commons from '../../styles/Commons';
 
 import Home from '../../../screens/Home';
@@ -24,7 +24,7 @@ function HomeStack({ navigation }){
                             style={{ margin: 15}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                             name="menu"
                             size={32}
-                            color={'red'}
+                            color='#ff0000'
                         />,
                     headerTitleAlign:'center'
                 }}
