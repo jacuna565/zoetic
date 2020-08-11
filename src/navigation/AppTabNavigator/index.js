@@ -22,18 +22,6 @@ const tabOpt = {
     }
 };
 
-
-const homeLabel = (color) => <View style={{alignItems: 'center'}}>
-                    <Text style={[tabOpt.labelTitle,{color: color}]}>Home</Text>
-                </View>;
-
-const vitalsLabel = (color) => <View style={{alignItems: 'center'}}>
-                    <Text style={[tabOpt.labelTitle,{color: color}]}>Vitals</Text>
-                </View>;
-
-const doctorLabel = (color) => <View style={{alignItems: 'center'}}>
-                    <Text style={[tabOpt.labelTitle,{color: color}]}>Doctor</Text>
-                </View>;
 const tabLabel = (label, color) => <View style={{alignItems: 'center'}}>
             <Text style={[tabOpt.labelTitle,{color: color}]}>{label}</Text>
         </View>;

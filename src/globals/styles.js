@@ -1,7 +1,10 @@
 const colors = {
-    primaryColor:'#8b19be',
-    secondaryColor:'#808080',
-    white:'#FFF'
+    primaryColor:'#3a2663',
+    secondaryColor:'#979797',
+    white:'#FFF',
+    pinkColor: '#f9206f',
+    turquoiseColor: '#08bcc6',
+    whiteDarker: '#f7f7f7'
 }
 
 export {

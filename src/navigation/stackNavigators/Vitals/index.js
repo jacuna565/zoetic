@@ -18,20 +18,25 @@ function VitalsStack({ navigation }){
                 name='Vitals'
                 component={Vitals}
                 options={{
-                    headerTitle:() => <Text >Vitals</Text>,
+                    headerStyle:{
+                        backgroundColor: colors.primaryColor,
+                        elevation: 0,
+                        shadowOpacity: 0
+                    },
+                    headerTitle:() => <Text style={styles.headerTitle} >Vitals</Text>,
                     headerLeft: () => 
                         <Icon
                             style={styles.icon} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                             name="menu"
                             size={32}
-                            color={colors.primaryColor}
+                            color={colors.white}
                         />,
                     headerRight: () => 
                         <Icon2
                             style={styles.icon}
                             name="plus"
                             size={32}
-                            color={colors.primaryColor}
+                            color={colors.white}
                         />,
                     headerTitleAlign:'center'
                 }}
@@ -43,6 +48,11 @@ function VitalsStack({ navigation }){
 const styles = StyleSheet.create({
     icon:{
         margin: 15
+    },
+    headerTitle:{
+        color: colors.white,
+        fontSize: 16,
+        fontWeight: 'bold'
     }
 });
 
