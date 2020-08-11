@@ -1,6 +1,13 @@
 import { StyleSheet} from "react-native";
 import { colors } from "../../globals/styles";
 const styles = StyleSheet.create({
+    container:{
+        backgroundColor: colors.white
+    },
+    containerGrid:{
+        backgroundColor: colors.white,
+        padding: 7
+    },
     header:{
         backgroundColor: colors.primaryColor,
         padding: 15,

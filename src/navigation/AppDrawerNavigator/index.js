@@ -15,7 +15,7 @@ const AppDrawerNavigator = (props) => {
                 options={{
                     drawerLabel: () => { return <View style={styles.drawerLabelContainer}>
                         <Icon style={styles.icon} name="home"/>
-                        <Text style={styles.drawerLabel}>Home</Text>
+                        <Text style={styles.drawerLabel}>My App</Text>
                     </View>}
                 }} 
             />
