@@ -31,13 +31,13 @@ const Tab = createBottomTabNavigator();
 function AppTabNavigator(){
     return (
         <Tab.Navigator
-            initialRouteName='Vitals'
+            initialRouteName='VitalsStack'
             screenOptions={({ route }) => ({
                 tabBarLabel: ({color}) => {
                     return tabLabel(route.name, color);
                 },
                 tabBarIcon: ({ focused, color }) => {
-                    let iconName = (route.name === 'Home') ? 'home' : (route.name === 'Vitals') ? 'barschart' : 'medicinebox';
+                    let iconName = (route.name === 'HomeStack') ? 'home' : (route.name === 'VitalsStack') ? 'barschart' : 'medicinebox';
                     return <Icon name={iconName} style={{color:(focused) ? color : colors.secondaryColor, fontSize: 24}}/>
                 },
             })}
@@ -48,9 +48,9 @@ function AppTabNavigator(){
                 inactiveBackgroundColor: colors.white
             }}
             >
-            <Tab.Screen name='Home' component={HomeStack} />
-            <Tab.Screen name='Vitals' component={VitalsStack} />
-            <Tab.Screen name='Doctor' component={DoctorStack} />
+            <Tab.Screen name='HomeStack' component={HomeStack} />
+            <Tab.Screen name='VitalsStack' component={VitalsStack} />
+            <Tab.Screen name='DoctorStack' component={DoctorStack} />
         </Tab.Navigator>
     )
 }

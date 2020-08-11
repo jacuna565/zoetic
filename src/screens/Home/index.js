@@ -2,7 +2,7 @@ import React from 'react';
 import { Text } from 'react-native';
 import { Grid } from "react-native-easy-grid";
 
-const Vitals = () => {
+const Home = () => {
     return (
         <Grid>
             <Text>Home screen!!!</Text> 
@@ -10,4 +10,4 @@ const Vitals = () => {
     );    
 }
 
-export default Vitals;
+export default Home;

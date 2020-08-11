@@ -6,10 +6,9 @@ import { colors } from '../../globals/styles';
 import styles from './styles';
 import Calendar from '../../components/Calendar';
 import Card from '../../components/Card';
+import LinearGradientButton from '../../components/LinearGradientButton';
 
-const Home = () => {
-    const screenHeight = Math.round(Dimensions.get('window').height);
-    console.log('screenHeight', screenHeight)
+const Vitals = () => {
     return (
         <>
         <StatusBar backgroundColor={colors.primaryColor} />
@@ -42,8 +41,9 @@ const Home = () => {
                 </Row>
             </Grid> 
         </ScrollView>
+        <LinearGradientButton />
         </>
     );    
 }
 
-export default Home;
+export default Vitals;
