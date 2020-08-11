@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     },
     containerGrid:{
         backgroundColor: colors.white,
-        padding: 7
+        height: '100%',
     },
     header:{
         backgroundColor: colors.primaryColor,

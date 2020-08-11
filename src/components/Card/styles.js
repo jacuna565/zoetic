@@ -38,6 +38,18 @@ const styles = StyleSheet.create({
         color: colors.secondaryColor,
         fontWeight: 'bold',
         fontSize: 16
+    },
+    info:{
+        height: '20%', 
+        alignItems: 'center',
+        justifyContent: 'center', 
+        flexDirection:'row', 
+        alignItems:'center'
+    },
+    infoTextBig:{
+        fontSize: 28, 
+        color: colors.white, 
+        fontWeight:'bold'
     }
 });
 
