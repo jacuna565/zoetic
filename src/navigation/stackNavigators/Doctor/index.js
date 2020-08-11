@@ -6,19 +6,19 @@ import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 // import Commons from '../../styles/Commons';
 
-import Home from '../../../screens/Home';
+import Doctor from '../../../screens/Doctor';
 // import SvgComponent from '../../components/icon/SvgComponent';
 
 const Stack = createStackNavigator();
 
-function HomeStack({ navigation }){
+function DoctorStack({ navigation }){
     return(
         <Stack.Navigator>
             <Stack.Screen 
-                name='Home'
-                component={Home}
+                name='Doctor'
+                component={Doctor}
                 options={{
-                    headerTitle:() => <Text>Tituloooo</Text>,
+                    headerTitle:() => <Text >Tituloooo</Text>,
                     headerLeft: () => 
                         <Icon
                             style={{ margin: 15}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
@@ -33,4 +33,4 @@ function HomeStack({ navigation }){
     )
 }
 
-export default HomeStack;
+export default DoctorStack;

@@ -10,11 +10,11 @@ const Drawer = createDrawerNavigator();
 
 const AppDrawerNavigator = (props) => {
     return (
-        <Drawer.Navigator initialRouteName='DashboardStack'  drawerContent={props => <CustomDrawerContent {...props}/>}>
-            <Drawer.Screen name='DashboardStack' component={DashboardStack}
+        <Drawer.Navigator initialRouteName='HomeStack'  drawerContent={props => <CustomDrawerContent {...props}/>}>
+            <Drawer.Screen name='HomeStack' component={DashboardStack}
                 options={{
                     drawerLabel: () => { return <View style={styles.drawerLabelContainer}>
-                        <Icon style={styles.icon} name="barschart"/>
+                        <Icon style={styles.icon} name="home"/>
                         <Text style={styles.drawerLabel}>Home</Text>
                     </View>}
                 }} 
