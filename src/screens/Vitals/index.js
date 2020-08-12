@@ -41,7 +41,7 @@ const Vitals = () => {
                 </Row>
             </Grid> 
         </ScrollView>
-        <LinearGradientButton />
+        <LinearGradientButton route='Measure' text='Measure now'/>
         </>
     );    
 }

@@ -7,7 +7,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons';
 
 import {colors} from '../../../globals/styles';
 import Vitals from '../../../screens/Vitals';
-// import Measure from '../../../screens/Measure';
+import MeasureTabNavigator from '../../MeasureTabNavigator';
 
 const Stack = createStackNavigator();
 
@@ -36,20 +36,20 @@ function VitalsStack({ navigation }){
             />
             <Stack.Screen 
                 name='Measure'
-                component={Vitals}
+                component={MeasureTabNavigator}
                 options={{
                     headerStyle:{
-                        backgroundColor: colors.primaryColor,
+                        backgroundColor: colors.white,
                         elevation: 0,
                         shadowOpacity: 0
                     },
-                    headerTitle:() => <Text style={[styles.headerTitle,styles.headerTitleDetail]}>Vitals</Text>,
+                    headerTitle:() => <Text style={[styles.headerTitle,styles.headerTitleInvert]}>Vitals</Text>,
                     headerLeft: () => 
                     <Icon
                         style={styles.icon} onPress={() => navigation.navigate('Vitals')}
                         name="chevron-left"
                         size={24}
-                        color={colors.white}
+                        color={colors.primaryColor}
                     /> 
                 }}
             />
