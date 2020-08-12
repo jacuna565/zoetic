@@ -12,7 +12,7 @@ const CardKit = (props) => {
     const [value, setValue] = useState(0);
     const [secondValue, setSecondValue] = useState(0);
     const [loader, setLoader] = useState(false);
-    const {type, element, message } = props;
+    const {type, element, message, showButton } = props;
     let icon;
 
     // not necessary if I had a single font icons
@@ -48,8 +48,10 @@ const CardKit = (props) => {
         }
         setHasOverlay(0);
         setLoader(true)
+        showButton(false)
         setTimeout(() => {
             setLoader(false)
+            showButton(true)
             setValue(calc);
             (type != 1) && setSecondValue(secondCalc)
         }, 1500);
