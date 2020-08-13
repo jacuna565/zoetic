@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import {useSelector} from 'react-redux';
 import { Text, StatusBar, View, ScrollView, Dimensions } from 'react-native';
 import { Grid, Row, Col } from "react-native-easy-grid";
 import moment from "moment";
@@ -8,7 +9,15 @@ import Calendar from '../../components/Calendar';
 import Card from '../../components/Card';
 import LinearGradientButton from '../../components/LinearGradientButton';
 
+import allActions from '../../actions';
+
 const Vitals = () => {
+    const measurementReducer = useSelector(state => state.measurementReducer);
+    
+    useEffect(()=>{
+        console.log(measurementReducer.measurements)
+    },[])
+
     return (
         <>
         <StatusBar backgroundColor={colors.primaryColor} />
@@ -18,7 +27,7 @@ const Vitals = () => {
                 <Text style={styles.headerTitle}>How are you feeling today?</Text>
             </View>
             <View style={styles.container}>
-                <Calendar />
+                <Calendar/>
             </View>
             <Grid style={{height:500, padding: 7}}>
                 <Row>

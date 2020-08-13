@@ -36,7 +36,6 @@ const CardKit = (props) => {
         let calc = 0;
         let secondCalc = 0;
         let precision= 100;
-        console.log(type)
         if(type == 1){
             calc = Math.floor(Math.random() * (99 * precision - 97 * precision) + 97 * precision) / (1*precision);
         }else if(type == 2){
