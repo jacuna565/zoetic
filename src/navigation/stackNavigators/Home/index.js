@@ -4,10 +4,7 @@ import { Platform, Text } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-// import Commons from '../../styles/Commons';
-
 import Home from '../../../screens/Home';
-// import SvgComponent from '../../components/icon/SvgComponent';
 
 const Stack = createStackNavigator();
 

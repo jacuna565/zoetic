@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
 import { Text, StatusBar, View, ScrollView, Dimensions } from 'react-native';
 import { Grid, Row, Col } from "react-native-easy-grid";
+import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from "moment";
 import { colors } from '../../globals/styles';
 import styles from './styles';
@@ -9,21 +10,34 @@ import Calendar from '../../components/Calendar';
 import Card from '../../components/Card';
 import LinearGradientButton from '../../components/LinearGradientButton';
 
-import allActions from '../../actions';
+const DEFAULT_SELECTED = {
+    blood: [0,0],
+    oximeter: [0,0],
+    temperature: 0
+}
 
 const Vitals = () => {
-    const [selectedDay, setSelectedDay] = useState({});
+    const [selectedDate, setSelectedDate] = useState(moment(new Date()).format('MM/DD/YYYY'));
+    const [itemFound, setItemFound] = useState(false);
+    const [selectedDay, setSelectedDay] = useState(DEFAULT_SELECTED);
 
     const measurementReducer = useSelector(state => state.measurementReducer);
     useEffect(()=>{
-        getInfoSelectedDay()
+        getInfoSelectedDay(selectedDate)
     },[selectedDay])
 
-    const getInfoSelectedDay = () =>{
+    const handleDateSelected = (date) =>{
+        setSelectedDate(date);
+        getInfoSelectedDay(date);
+    }
+
+    const getInfoSelectedDay = (selectedDate) =>{
         let measurements = measurementReducer.measurements;
+        setItemFound(false);
         measurements.map((item) => {
-            if(moment(new Date()).format('MM/DD/YYYY') === item.registrationDate){
-                setSelectedDay(item)
+            if(selectedDate === item.registrationDate){
+                setSelectedDay(item);
+                setItemFound(true);
             }
         })
     }
@@ -37,28 +51,34 @@ const Vitals = () => {
                 <Text style={styles.headerTitle}>How are you feeling today?</Text>
             </View>
             <View style={styles.container}>
-                <Calendar/>
+                <Calendar onDateSelected={handleDateSelected} selectedDate={selectedDate}/>
             </View>
-            <Grid style={{height:500, padding: 7}}>
-                <Row>
-                    <Col>
-                        <Row size={2}>
-                            <Card color={colors.pinkColor} type={1} element={selectedDay}/>
-                        </Row>
-                        <Row size={3}>
-                            <Card color={colors.primaryColor} type={2} element={selectedDay}/>
-                        </Row>
-                    </Col>
-                    <Col>
-                        <Row size={2}>
-                            <Card color={colors.turquoiseColor} type={3} element={selectedDay}/>
-                        </Row>
-                        <Row size={1}>
-                            <Card color={colors.whiteDarker} type={4} element={selectedDay}/>
-                        </Row>
-                    </Col>
-                </Row>
-            </Grid> 
+            {itemFound ?
+                <Grid style={{height:500, padding: 7}}>
+                    <Row>
+                        <Col>
+                            <Row size={2}>
+                                <Card color={colors.pinkColor} type={1} element={selectedDay}/>
+                            </Row>
+                            <Row size={3}>
+                                <Card color={colors.primaryColor} type={2} element={selectedDay}/>
+                            </Row>
+                        </Col>
+                        <Col>
+                            <Row size={2}>
+                                <Card color={colors.turquoiseColor} type={3} element={selectedDay}/>
+                            </Row>
+                            <Row size={1}>
+                                <Card color={colors.whiteDarker} type={4} element={selectedDay}/>
+                            </Row>
+                        </Col>
+                    </Row>
+                </Grid> 
+            : <View style={styles.notFoundContainer}>
+                <Icon style={styles.notFoundIcon} name='error-outline'/>
+                <Text style={styles.notFoundText}>no measurements found for this day</Text>
+            </View>
+            }
         </ScrollView>
         <LinearGradientButton route='Measure' text='Measure now'/>
         </>

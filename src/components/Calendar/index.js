@@ -6,7 +6,10 @@ import styles from './styles';
 
 const daySelectionAnimation = {type: 'background', duration: 200, highlightColor: colors.primaryColor}
 
-const Calendar = () => {
+const Calendar = ({onDateSelected, selectedDate}) => {
+    const handleDateSelected = (date) =>{
+        onDateSelected(date)
+    }
     return (<CalendarStrip
             scrollable
             daySelectionAnimation={daySelectionAnimation}
@@ -18,10 +21,12 @@ const Calendar = () => {
             highlightDateNameStyle={{color: colors.white}}
             leftSelector={[]}
             rightSelector={[]}
-            showMonth={false}
+            showMonth={true}
+            calendarHeaderStyle={{color:colors.primaryColor}}
             startingDate={moment().subtract(3, 'days')}
-            selectedDate={moment(new Date())}
-            onDateSelected={(ev) => console.log(moment(ev).format('MM/DD/YYYY'))}
+            selectedDate={moment(selectedDate).toDate()}
+            maxDate={new Date()}
+            onDateSelected={(ev) => handleDateSelected(moment(ev).format('MM/DD/YYYY'))}
         />
     );    
 }

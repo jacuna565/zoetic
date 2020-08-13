@@ -25,6 +25,22 @@ const styles = StyleSheet.create({
         marginBottom: 5,
         marginTop: 5,
         fontSize: 16
+    },
+    notFoundContainer:{
+        height:400,
+        justifyContent: 'center',
+        padding: 15
+    },
+    notFoundIcon:{
+        color: colors.primaryColor,
+        fontSize: 48,
+        textAlign:'center',
+    },
+    notFoundText:{
+        color: colors.secondaryColor,
+        textTransform: 'uppercase',
+        fontSize: 22,
+        textAlign:'center',
     }
 });
 

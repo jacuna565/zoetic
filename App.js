@@ -1,28 +1,34 @@
 
 import React, { useState, useEffect} from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { NavigationContainer } from '@react-navigation/native';
 import AppNavigator from './src/navigation/AppNavigator';
 import Splash from './src/screens/Splash';
+import {renderLoader} from './src/func/globals';
 
 import allActions from './src/actions';
 
 const App = () =>{
     const [isLoading, setIsLoading] = useState(true);
 
+    const measurementReducer = useSelector(state => state.measurementReducer);
     const dispatch = useDispatch();
 
     useEffect( () =>{
         dispatch(allActions.measurementActions.loadMeasurements())
         setTimeout(() => {
-            setIsLoading(false);
+            showLoader();
         }, 2000);        
     },[])
+
+    const showLoader = () =>{
+        (!measurementReducer.isLoading) && setIsLoading(false)
+    }
     
     let rndr;
 
     if (isLoading) {
-        rndr = <Splash />;
+        rndr = <Splash loading={isLoading}/>;
     }else {
         rndr = <AppNavigator />;
     } 

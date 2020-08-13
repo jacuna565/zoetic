@@ -1,17 +1,19 @@
 
 import React from 'react';
-import { Image } from 'react-native';
+import { Image,ActivityIndicator, View } from 'react-native';
 import { Grid } from "react-native-easy-grid";
 import styles from './styles';
+import Loader from '../../components/Loader';
 
-const Splash = () => {
+const Splash = ({loading}) => {
     return (
         <Grid>
             <Image 
                 style={styles.image}
                 resizeMode="contain"
                 source={require('../../assets/zoetic-logo.png')}
-            />    
+            /> 
+            <Loader show={loading} style={{marginTop: 50}}/>  
         </Grid>
     );    
 }
