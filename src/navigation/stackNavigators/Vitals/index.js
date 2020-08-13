@@ -4,7 +4,6 @@ import { Text, StyleSheet } from 'react-native';
 import { DrawerActions } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
 import Icon from 'react-native-vector-icons/MaterialIcons';
-
 import {colors} from '../../../globals/styles';
 import Vitals from '../../../screens/Vitals';
 import MeasureTabNavigator from '../../MeasureTabNavigator';
@@ -28,6 +27,13 @@ function VitalsStack({ navigation }){
                         <Icon
                             style={styles.icon} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                             name="menu"
+                            size={32}
+                            color={colors.white}
+                        />,
+                    headerRight: () => 
+                        <Icon
+                            style={styles.icon} onPress={() => console.log('some stack or screen here!')}
+                            name="add"
                             size={32}
                             color={colors.white}
                         />,

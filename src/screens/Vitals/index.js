@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {useSelector} from 'react-redux';
 import { Text, StatusBar, View, ScrollView, Dimensions } from 'react-native';
 import { Grid, Row, Col } from "react-native-easy-grid";
@@ -12,11 +12,21 @@ import LinearGradientButton from '../../components/LinearGradientButton';
 import allActions from '../../actions';
 
 const Vitals = () => {
+    const [selectedDay, setSelectedDay] = useState({});
+
     const measurementReducer = useSelector(state => state.measurementReducer);
-    
     useEffect(()=>{
-        console.log(measurementReducer.measurements)
-    },[])
+        getInfoSelectedDay()
+    },[selectedDay])
+
+    const getInfoSelectedDay = () =>{
+        let measurements = measurementReducer.measurements;
+        measurements.map((item) => {
+            if(moment(new Date()).format('MM/DD/YYYY') === item.registrationDate){
+                setSelectedDay(item)
+            }
+        })
+    }
 
     return (
         <>
@@ -33,18 +43,18 @@ const Vitals = () => {
                 <Row>
                     <Col>
                         <Row size={2}>
-                            <Card color={colors.pinkColor} type={1} element={{category: 'Temperature'}}/>
+                            <Card color={colors.pinkColor} type={1} element={selectedDay}/>
                         </Row>
                         <Row size={3}>
-                            <Card color={colors.primaryColor} type={2} element={{category: 'Oximeter'}}/>
+                            <Card color={colors.primaryColor} type={2} element={selectedDay}/>
                         </Row>
                     </Col>
                     <Col>
                         <Row size={2}>
-                            <Card color={colors.turquoiseColor} type={3} element={{category: 'Blood'}}/>
+                            <Card color={colors.turquoiseColor} type={3} element={selectedDay}/>
                         </Row>
                         <Row size={1}>
-                            <Card color={colors.whiteDarker} type={4} element={{category: ''}}/>
+                            <Card color={colors.whiteDarker} type={4} element={selectedDay}/>
                         </Row>
                     </Col>
                 </Row>

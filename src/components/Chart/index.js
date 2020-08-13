@@ -5,8 +5,7 @@ import { LineChart, YAxis } from 'react-native-svg-charts';
 import * as shape from 'd3-shape';
 import { colors } from '../../globals/styles';
 
-const Chart = ({element}) => {
-    const data = [97, 97.5, 98, 97, 96, 97, 97.5, 98, 97, 96]; //just for fun
+const Chart = ({data}) => {
     const contentInset = { top: 20, bottom: 20 }
     return (
         <View style={{ height: '70%', flexDirection: 'row' }}>

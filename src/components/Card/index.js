@@ -11,36 +11,62 @@ import { colors } from '../../globals/styles';
 
 const Card = (props) => {
     let {color, type, element } = props;
-    let icon;
+    let { temperature, blood, oximeter } = element;
 
     // not necessary if I had a single font icons
     // just for this case doing this:
-    const getIcon = () =>{
+    const getIconTitle = () =>{
+        let icon;
+        let text;
         switch(type){
             case 1:
                 icon = <Icon style={styles.iconTitle} name='thermometer'/>
+                text = <Text style={styles.textTitle}>Temperature</Text>
             break;
             case 2:
                 icon = <Icon2 style={styles.iconTitle} name='lungs'/>
+                text = <Text style={styles.textTitle}>Oximeter</Text>
             break;
             case 3:
                 icon = <Icon3 style={styles.iconTitle} name='blood-drop'/>
+                text = <Text style={styles.textTitle}>Blood</Text>
             break;
         }
-        return (icon)
+        return (<View style={styles.titleContainer}>
+            {icon}
+            {text}
+        </View>)
     }
+
+    const getChartValues = () =>{
+        let range = [];
+        let value = (type === 1) ? element.temperature : (type === 2) ? element.oximeter[1] : element.blood[0]
+        let aux;
+        for(let i=0; i<=type; i++){
+            range.push(parseFloat(value))
+            range.push(parseFloat(value) + 0.5)
+            range.push(parseFloat(value) + 2.5)
+            range.push(parseFloat(value) - 0.5)
+            range.push(parseFloat(value) - 2.5)
+        }
+        return range;
+    }
+
+    const getFirstValue = () =>{
+        let value='';
+        value = (type === 1) ? temperature : (type === 2) ? oximeter[0] : blood[0]
+        return value;
+    }
+
     return (<View style={styles.container}>
         <View style={[styles.card,{backgroundColor: color}]}>
             {(type !== 4) && 
                 <>
-                <View style={styles.titleContainer}>
-                    {getIcon()}
-                    <Text style={styles.textTitle}>{element.category}</Text>
-                </View>
-                <Chart />
+                {getIconTitle()}
+                <Chart data={getChartValues()}/>
                 <View style={styles.info}>
-                    <Text style={styles.infoTextBig}>91.6{(type===3) && <Text style={{color:colors.white}}>/ <Text style={{color:'red'}}>70</Text></Text>}<Text style={{fontSize: 12}}>{(type === 1) ? '°F' : (type === 2) ? '%' : 'mmHG'}</Text></Text>
-                    {(type === 2) && <Text style={styles.infoTextBig}> 78.6<Text style={{fontSize: 12}}>bpm</Text></Text>}
+                    <Text style={styles.infoTextBig}>{getFirstValue()}{(type===3) && <Text style={{color:colors.white}}>/<Text style={{color:'red'}}>{blood[1]}</Text></Text>}<Text style={{fontSize: 12}}>{(type === 1) ? '°F' : (type === 2) ? '%' : 'mmHG'}</Text></Text>
+                    {(type === 2) && <Text style={styles.infoTextBig}> {oximeter[1]}<Text style={{fontSize: 12}}>bpm</Text></Text>}
                 </View>
                 </>
             }
