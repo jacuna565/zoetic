@@ -53,7 +53,10 @@ const Vitals = ({route}) => {
 
   return (
     <>
-      <StatusBar backgroundColor={colors.primaryColor} />
+      <StatusBar
+        backgroundColor={colors.primaryColor}
+        barStyle="light-content"
+      />
       <ScrollView style={styles.containerGrid}>
         <View style={styles.header}>
           <Text style={styles.headerDate}>

@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {useDispatch} from 'react-redux';
-import {ScrollView} from 'react-native';
+import {ScrollView, StatusBar} from 'react-native';
 import _ from 'lodash';
 import {useNavigation} from '@react-navigation/native';
 import moment from 'moment';
@@ -11,6 +11,7 @@ import getLogoutClient from '../../func/loggedOutClient';
 import styles from './styles';
 
 import allActions from '../../actions';
+import {colors} from '../../globals/styles';
 
 const VitalsKit = () => {
   const [showBtn, setShowBtn] = useState(true);
@@ -64,38 +65,43 @@ const VitalsKit = () => {
   };
 
   return (
-    <ScrollView style={styles.container}>
-      <CardKit
-        symbol="°F"
-        showButton={handleShowButton}
-        type={1}
-        message="Waer thermometer view temperature"
-        processValues={processValues}
-      />
-      <CardKit
-        symbol="mmHg"
-        showButton={handleShowButton}
-        type={2}
-        message="Wear blood pressure monitor to view blood press"
-        processValues={processValues}
-      />
-      <CardKit
-        symbol="% bpm"
-        showButton={handleShowButton}
-        type={3}
-        message="Wear oximeter to view SpO2 and bpm"
-        processValues={processValues}
-      />
-      {showBtn && (
-        <Button
-          block
-          disabled={isDisable}
-          onPress={() => handleSubmit()}
-          style={styles.btn}>
-          <Text style={styles.text}>Complete</Text>
-        </Button>
-      )}
-    </ScrollView>
+    <>
+      <StatusBar 
+        backgroundColor={colors.white} 
+        barStyle="dark-content" />
+      <ScrollView style={styles.container}>
+        <CardKit
+          symbol="°F"
+          showButton={handleShowButton}
+          type={1}
+          message="Waer thermometer view temperature"
+          processValues={processValues}
+        />
+        <CardKit
+          symbol="mmHg"
+          showButton={handleShowButton}
+          type={2}
+          message="Wear blood pressure monitor to view blood press"
+          processValues={processValues}
+        />
+        <CardKit
+          symbol="% bpm"
+          showButton={handleShowButton}
+          type={3}
+          message="Wear oximeter to view SpO2 and bpm"
+          processValues={processValues}
+        />
+        {showBtn && (
+          <Button
+            block
+            disabled={isDisable}
+            onPress={() => handleSubmit()}
+            style={styles.btn}>
+            <Text style={styles.text}>Complete</Text>
+          </Button>
+        )}
+      </ScrollView>
+    </>
   );
 };
 
