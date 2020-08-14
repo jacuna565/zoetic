@@ -1,10 +1,11 @@
 
-import React from 'react';
-import { Platform, Text } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import Home from '../../../screens/Home';
+import React from "react";
+import { Platform, Text } from "react-native";
+import { DrawerActions } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Icon } from "native-base";
+import Home from "../../../screens/Home";
+import { colors } from "../../../globals/styles";
 
 const Stack = createStackNavigator();
 
@@ -12,18 +13,19 @@ function HomeStack({ navigation }){
     return(
         <Stack.Navigator>
             <Stack.Screen 
-                name='Home'
+                name="Home"
                 component={Home}
                 options={{
                     headerTitle:() => <Text>Home</Text>,
                     headerLeft: () => 
-                        <Icon
-                            style={{ margin: 15}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        <Icon 
+                            type="MaterialIcons" 
+                            style={{ margin: 15, color: colors.white}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                             name="menu"
                             size={32}
-                            color='#fff'
+                            color="#fff"
                         />,
-                    headerTitleAlign:'center'
+                    headerTitleAlign:"center"
                 }}
             />
         </Stack.Navigator>

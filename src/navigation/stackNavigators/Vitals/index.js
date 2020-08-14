@@ -1,12 +1,12 @@
 
-import React from 'react';
-import { Text, StyleSheet } from 'react-native';
-import { DrawerActions } from '@react-navigation/native';
-import { createStackNavigator } from '@react-navigation/stack';
-import Icon from 'react-native-vector-icons/MaterialIcons';
-import {colors} from '../../../globals/styles';
-import Vitals from '../../../screens/Vitals';
-import MeasureTabNavigator from '../../MeasureTabNavigator';
+import React from "react";
+import { Text, StyleSheet } from "react-native";
+import { DrawerActions } from "@react-navigation/native";
+import { createStackNavigator } from "@react-navigation/stack";
+import { Icon } from "native-base";
+import {colors} from "../../../globals/styles";
+import Vitals from "../../../screens/Vitals";
+import MeasureTabNavigator from "../../MeasureTabNavigator";
 
 const Stack = createStackNavigator();
 
@@ -14,7 +14,7 @@ function VitalsStack({ navigation }){
     return(
         <Stack.Navigator>
             <Stack.Screen 
-                name='Vitals'
+                name="Vitals"
                 component={Vitals}
                 options={{
                     headerStyle:{
@@ -24,24 +24,26 @@ function VitalsStack({ navigation }){
                     },
                     headerTitle:() => <Text style={styles.headerTitle} >Vitals</Text>,
                     headerLeft: () => 
-                        <Icon
-                            style={styles.icon} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
+                        <Icon 
+                            type="MaterialIcons" 
+                            style={{ margin: 15, color: colors.white}} 
+                            onPress={() => navigation.dispatch(DrawerActions.openDrawer())}
                             name="menu"
                             size={32}
-                            color={colors.white}
+                            color="#fff"
                         />,
                     headerRight: () => 
-                        <Icon
-                            style={styles.icon} onPress={() => console.log('some stack or screen here!')}
-                            name="add"
-                            size={32}
-                            color={colors.white}
+                        <Icon 
+                            type="Entypo" 
+                            style={{ margin: 15, color: colors.white}}
+                            onPress={() => console.log("some stack or screen here!")}
+                            name="plus"
                         />,
-                    headerTitleAlign:'center'
+                    headerTitleAlign:"center"
                 }}
             />
             <Stack.Screen 
-                name='Measure'
+                name="Measure"
                 component={MeasureTabNavigator}
                 options={{
                     headerStyle:{
@@ -52,10 +54,9 @@ function VitalsStack({ navigation }){
                     headerTitle:() => <Text style={[styles.headerTitle,styles.headerTitleInvert]}>Vitals</Text>,
                     headerLeft: () => 
                     <Icon
-                        style={styles.icon} onPress={() => navigation.navigate('Vitals')}
+                        style={styles.icon} onPress={() => navigation.navigate("Vitals")}
+                        type="Entypo"
                         name="chevron-left"
-                        size={24}
-                        color={colors.primaryColor}
                     /> 
                 }}
             />
@@ -65,12 +66,14 @@ function VitalsStack({ navigation }){
 
 const styles = StyleSheet.create({
     icon:{
-        margin: 15
+        margin: 15,
+        fontSize: 24, 
+        color: colors.primaryColor
     },
     headerTitle:{
         color: colors.white,
         fontSize: 16,
-        fontWeight: 'bold'
+        fontWeight: "bold"
     },
     headerTitleInvert:{
         color: colors.primaryColor,

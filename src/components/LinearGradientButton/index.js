@@ -1,9 +1,9 @@
-import React from 'react';
-import {useNavigation} from '@react-navigation/native';
-import {Text, TouchableOpacity } from 'react-native';
-import LinearGradient from 'react-native-linear-gradient';
+import React from "react";
+import {useNavigation} from "@react-navigation/native";
+import {Text, TouchableOpacity } from "react-native";
+import LinearGradient from "react-native-linear-gradient";
 import { colors } from "../../globals/styles";
-import styles from './styles';
+import styles from "./styles";
 
 const LinearGradientButton = ({route, text}) => {
     const navigation = useNavigation();

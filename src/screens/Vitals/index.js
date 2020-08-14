@@ -1,15 +1,15 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
-import { Text, StatusBar, View, ScrollView } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { Text, StatusBar, View, ScrollView } from "react-native";
 import { Grid, Row, Col } from "react-native-easy-grid";
-import _ from 'lodash';
-import Icon from 'react-native-vector-icons/MaterialIcons';
+import _ from "lodash";
+import { Icon } from "native-base";
 import moment from "moment";
-import { colors } from '../../globals/styles';
-import styles from './styles';
-import Calendar from '../../components/Calendar';
-import Card from '../../components/Card';
-import LinearGradientButton from '../../components/LinearGradientButton';
+import { colors } from "../../globals/styles";
+import styles from "./styles";
+import Calendar from "../../components/Calendar";
+import Card from "../../components/Card";
+import LinearGradientButton from "../../components/LinearGradientButton";
 
 const DEFAULT_SELECTED = {
     blood: [0,0],
@@ -18,7 +18,7 @@ const DEFAULT_SELECTED = {
 }
 
 const Vitals = ({route}) => {
-    const [selectedDate, setSelectedDate] = useState(moment(new Date()).format('MM/DD/YYYY'));
+    const [selectedDate, setSelectedDate] = useState(moment(new Date()).format("MM/DD/YYYY"));
     const [itemFound, setItemFound] = useState(false);
     const [selectedDay, setSelectedDay] = useState(DEFAULT_SELECTED);
 
@@ -28,7 +28,7 @@ const Vitals = ({route}) => {
         getInfoSelectedDay(selectedDate)
     },[selectedDay])
     useEffect(()=>{
-        getInfoSelectedDay(moment(new Date()).format('MM/DD/YYYY'))
+        getInfoSelectedDay(moment(new Date()).format("MM/DD/YYYY"))
     },[route.params])
 
     const handleDateSelected = (date) =>{
@@ -52,7 +52,7 @@ const Vitals = ({route}) => {
         <StatusBar backgroundColor={colors.primaryColor} />
         <ScrollView style={styles.containerGrid}>
             <View style={styles.header}>
-                <Text style={styles.headerDate}>{moment(new Date()).format('ll')}</Text>
+                <Text style={styles.headerDate}>{moment(new Date()).format("ll")}</Text>
                 <Text style={styles.headerTitle}>How are you feeling today?</Text>
             </View>
             <View style={styles.container}>
@@ -80,12 +80,12 @@ const Vitals = ({route}) => {
                     </Row>
                 </Grid> 
             : <View style={styles.notFoundContainer}>
-                <Icon style={styles.notFoundIcon} name='error-outline'/>
+                <Icon type="MaterialIcons" style={styles.notFoundIcon} name="error-outline"/>
                 <Text style={styles.notFoundText}>no measurements found for this day</Text>
             </View>
             }
         </ScrollView>
-        <LinearGradientButton route='Measure' text='Measure now'/>
+        <LinearGradientButton route="Measure" text="Measure now"/>
         </>
     );    
 }

@@ -1,10 +1,10 @@
-import React from 'react';
-import CalendarStrip from 'react-native-calendar-strip';
+import React from "react";
+import CalendarStrip from "react-native-calendar-strip";
 import moment from "moment";
-import { colors } from '../../globals/styles';
-import styles from './styles';
+import { colors } from "../../globals/styles";
+import styles from "./styles";
 
-const daySelectionAnimation = {type: 'background', duration: 200, highlightColor: colors.primaryColor}
+const daySelectionAnimation = {type: "background", duration: 200, highlightColor: colors.primaryColor}
 
 const Calendar = ({onDateSelected, selectedDate}) => {
     const handleDateSelected = (date) =>{
@@ -23,10 +23,10 @@ const Calendar = ({onDateSelected, selectedDate}) => {
             rightSelector={[]}
             showMonth={true}
             calendarHeaderStyle={{color:colors.primaryColor}}
-            startingDate={moment().subtract(3, 'days')}
+            startingDate={moment().subtract(3, "days")}
             selectedDate={moment(selectedDate).toDate()}
             maxDate={new Date()}
-            onDateSelected={(ev) => handleDateSelected(moment(ev).format('MM/DD/YYYY'))}
+            onDateSelected={(ev) => handleDateSelected(moment(ev).format("MM/DD/YYYY"))}
         />
     );    
 }

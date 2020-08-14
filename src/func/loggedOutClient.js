@@ -1,5 +1,5 @@
-import axios from 'axios';
-import { server, api } from './globals';
+import axios from "axios";
+import { server, api } from "./globals";
 const logoutClient = axios.create({
     baseURL: server+api(),
     timeout: 10000,

@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     },
     containerGrid:{
         backgroundColor: colors.white,
-        height: '100%',
+        height: "100%",
     },
     header:{
         backgroundColor: colors.primaryColor,
@@ -17,30 +17,30 @@ const styles = StyleSheet.create({
         color: colors.white,
         marginBottom: 5,
         fontSize: 14,
-        textTransform: 'uppercase'
+        textTransform: "uppercase"
     },
     headerTitle: {
         color: colors.white,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         marginBottom: 5,
         marginTop: 5,
         fontSize: 16
     },
     notFoundContainer:{
         height:400,
-        justifyContent: 'center',
+        justifyContent: "center",
         padding: 15
     },
     notFoundIcon:{
         color: colors.primaryColor,
         fontSize: 48,
-        textAlign:'center',
+        textAlign:"center",
     },
     notFoundText:{
         color: colors.secondaryColor,
-        textTransform: 'uppercase',
+        textTransform: "uppercase",
         fontSize: 22,
-        textAlign:'center',
+        textAlign:"center",
     }
 });
 

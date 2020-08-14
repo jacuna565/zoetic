@@ -3,15 +3,15 @@ import { colors } from "../../globals/styles";
 const styles = StyleSheet.create({
     container: {
         flex: 1,
-        alignItems: 'center',
-        justifyContent: 'center',
-        position: 'absolute',
+        alignItems: "center",
+        justifyContent: "center",
+        position: "absolute",
         bottom: 15,
         right: 15,
         borderRadius: 100,
         width: 85,
         height: 85,
-        shadowColor: '#000',
+        shadowColor: "#000",
         shadowOffset: {
             width: 0,
             height: 2,
@@ -22,12 +22,12 @@ const styles = StyleSheet.create({
         elevation: 5
       },
       linearGradient: {
-        alignItems: 'center',
-        justifyContent: 'center',
+        alignItems: "center",
+        justifyContent: "center",
         borderRadius: 100,
         padding: 5,
-        height: 'auto',
-        width: 'auto',
+        height: "auto",
+        width: "auto",
         
       },
       textButton:{
@@ -35,9 +35,9 @@ const styles = StyleSheet.create({
         height: 75, 
         width: 75, 
         borderRadius: 100, 
-        textAlign: 'center', 
-        textTransform: 'uppercase', 
-        fontWeight: 'bold', 
+        textAlign: "center", 
+        textTransform: "uppercase", 
+        fontWeight: "bold", 
         color: colors.primaryColor,
         paddingTop: 25,
         fontSize: 14

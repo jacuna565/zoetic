@@ -1,34 +1,28 @@
-import React from 'react';
-import { Text, View } from 'react-native';
-import _ from 'lodash';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon2 from 'react-native-vector-icons/FontAwesome5';
-import Icon3 from 'react-native-vector-icons/Fontisto';
-import Icon4 from 'react-native-vector-icons/MaterialCommunityIcons';
-import Chart from '../Chart';
-import styles from './styles';
-import { colors } from '../../globals/styles';
+import React from "react";
+import { Text, View } from "react-native";
+import _ from "lodash";
+import { Icon } from "native-base";
+import Chart from "../Chart";
+import styles from "./styles";
+import { colors } from "../../globals/styles";
 
 const Card = (props) => {
     let {color, type, element } = props;
     let { temperature, blood, oximeter } = element;
-
-    // not necessary if I had a single font icons
-    // just for this case doing this:
     const getIconTitle = () =>{
         let icon;
         let text;
         switch(type){
             case 1:
-                icon = <Icon style={styles.iconTitle} name='thermometer'/>
+                icon = <Icon type="FontAwesome" style={styles.iconTitle} name="thermometer" />
                 text = <Text style={styles.textTitle}>Temperature</Text>
             break;
             case 2:
-                icon = <Icon2 style={styles.iconTitle} name='lungs'/>
+                icon = <Icon type="Entypo" style={styles.iconTitle} name="heart" />
                 text = <Text style={styles.textTitle}>Oximeter</Text>
             break;
             case 3:
-                icon = <Icon3 style={styles.iconTitle} name='blood-drop'/>
+                icon = <Icon type="Entypo" style={styles.iconTitle} name="drop" />
                 text = <Text style={styles.textTitle}>Blood</Text>
             break;
         }
@@ -53,7 +47,7 @@ const Card = (props) => {
     }
 
     const getFirstValue = () =>{
-        let value='';
+        let value="";
         value = (_.isEqual(type,1)) ? temperature : (_.isEqual(type,2)) ? oximeter[0] : blood[0]
         return value;
     }
@@ -65,12 +59,12 @@ const Card = (props) => {
                 {getIconTitle()}
                 <Chart data={getChartValues()}/>
                 <View style={styles.info}>
-                    <Text style={styles.infoTextBig}>{getFirstValue()}{(_.isEqual(type,3)) && <Text style={{color:colors.white}}>/<Text style={{color:'red'}}>{blood[1]}</Text></Text>}<Text style={{fontSize: 12}}>{(_.isEqual(type,1)) ? '°F' : (_.isEqual(type,2)) ? '%' : 'mmHG'}</Text></Text>
+                    <Text style={styles.infoTextBig}>{getFirstValue()}{(_.isEqual(type,3)) && <Text style={{color:colors.white}}>/<Text style={{color:"red"}}>{blood[1]}</Text></Text>}<Text style={{fontSize: 12}}>{(_.isEqual(type,1)) ? "°F" : (_.isEqual(type,2)) ? "%" : "mmHG"}</Text></Text>
                     {(_.isEqual(type,2)) && <Text style={styles.infoTextBig}> {oximeter[1]}<Text style={{fontSize: 12}}>bpm</Text></Text>}
                 </View>
                 </>
             }
-            {(_.isEqual(type,4)) && <View style={styles.titleContainerCentered}><Icon4 style={styles.iconTitleInvert} name='face-recognition'/><Text style={styles.textTitleInvert}>face-recognition</Text></View>}
+            {(_.isEqual(type,4)) && <View style={styles.titleContainerCentered}><Icon type="FontAwesome" style={styles.iconTitleInvert} name="smile-o"/><Text style={styles.textTitleInvert}>face-recognition</Text></View>}
         </View>
     </View>
     );    

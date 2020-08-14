@@ -1,11 +1,9 @@
-import React, { useState } from 'react';
-import { Text, View, TouchableOpacity } from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome';
-import Icon2 from 'react-native-vector-icons/Fontisto';
-import Icon3 from 'react-native-vector-icons/FontAwesome5';
-import styles from './styles';
-import { colors } from '../../globals/styles';
-import Loader from '../Loader';
+import React, { useState } from "react";
+import { Text, View, TouchableOpacity } from "react-native";
+import { Icon } from "native-base";
+import styles from "./styles";
+import { colors } from "../../globals/styles";
+import Loader from "../Loader";
 
 const CardKit = (props) => {
     const [hasOverlay, setHasOverlay] = useState(0.8);
@@ -19,15 +17,15 @@ const CardKit = (props) => {
         let text;
         switch(type){
             case 1:
-                icon = <Icon style={styles.icon} name='thermometer'/>
+                icon = <Icon type="FontAwesome" style={styles.icon} name="thermometer" />
                 text = <Text style={styles.category}>Temperature</Text>
             break;
             case 2:
-                icon = <Icon2 style={styles.icon} name='blood-drop'/>
+                icon = <Icon type="Entypo" style={styles.icon} name="drop" />
                 text = <Text style={styles.category}>Blood</Text>
             break;
             case 3:
-                icon = <Icon3 style={styles.icon} name='lungs'/>
+                icon = <Icon type="Entypo" style={styles.icon} name="heart" />
                 text = <Text style={styles.category}>Oximeter</Text>
             break;
         }
@@ -64,34 +62,34 @@ const CardKit = (props) => {
 
     const getSecondValue = () =>{
         let style = (type == 2) ? styles.secondValue : styles.value;
-        let alternative = (type == 2) ? '/' : '';
+        let alternative = (type == 2) ? "/" : "";
         return (<Text style={styles.value}>{alternative}<Text style={style}>{secondValue}</Text></Text>)
     }
 
     return (<TouchableOpacity style={styles.container} onPress={() => calculate()}>
         <View style={styles.card}>
             <Loader show={loader}/>
-            <View style={[styles.cardItemContainer,{width:'40%'}]}>
+            <View style={[styles.cardItemContainer,{width:"40%"}]}>
                 {getIconTitle()}
             </View>
             {(type != 3)
-            ? <View style={[styles.cardItemContainer,{width:'60%', alignItems:'flex-end'}]}>
+            ? <View style={[styles.cardItemContainer,{width:"60%", alignItems:"flex-end"}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{value}{(secondValue != 0) && getSecondValue()}</Text>
                     <Text style={styles.symbol}>{symbol}</Text>
                 </View>
             </View>
             :<>
-            <View style={[styles.cardItemContainer,{width:'30%', alignItems:'flex-end'}]}>
+            <View style={[styles.cardItemContainer,{width:"30%", alignItems:"flex-end"}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{value}</Text>
-                    <Text style={styles.symbol}>{(symbol.split(' ')[0])}</Text>
+                    <Text style={styles.symbol}>{(symbol.split(" ")[0])}</Text>
                 </View>
             </View>
-            <View style={[styles.cardItemContainer,{width:'30%', alignItems:'flex-end'}]}>
+            <View style={[styles.cardItemContainer,{width:"30%", alignItems:"flex-end"}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{getSecondValue()}</Text>
-                    <Text style={styles.symbol}>{(symbol.split(' ')[1])}</Text>
+                    <Text style={styles.symbol}>{(symbol.split(" ")[1])}</Text>
                 </View>
             </View>
             </>

@@ -1,4 +1,4 @@
-import { LOAD_MEASUREMENTS_START, LOAD_MEASUREMENTS_SUCCESS, LOAD_MEASUREMENTS_FAILURE } from '../actions/types';
+import { LOAD_MEASUREMENTS_START, LOAD_MEASUREMENTS_SUCCESS, LOAD_MEASUREMENTS_FAILURE } from "../actions/types";
 
 let initialState = {
     measurements: {},

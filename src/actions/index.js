@@ -1,4 +1,4 @@
-import measurementActions from './measurementActions';
+import measurementActions from "./measurementActions";
 
 const allActions = {
     measurementActions,

@@ -2,37 +2,37 @@ import { StyleSheet} from "react-native";
 import { colors } from "../../globals/styles";
 const styles = StyleSheet.create({
     container:{
-        width:'100%',
+        width:"100%",
         backgroundColor: colors.whiteDarker,
         borderRadius: 15,
         height: 140,
-        justifyContent: 'center',
+        justifyContent: "center",
         marginBottom: 25
     },
     card:{
-        width:'100%',
-        flexDirection:'row',
-        height:'100%'
+        width:"100%",
+        flexDirection:"row",
+        height:"100%"
     },
     icon:{
         fontSize: 28,
         color: colors.primaryColor
     },
     cardItemContainer:{
-        justifyContent:'center',
+        justifyContent:"center",
         paddingLeft: 20,
         paddingRight: 20,
     },
     cardItem:{
-        flexWrap: 'wrap', 
-        alignItems: 'flex-start',
-        flexDirection:'row',
+        flexWrap: "wrap", 
+        alignItems: "flex-start",
+        flexDirection:"row",
     },
     category:{
         fontSize: 14,
         marginLeft: 5,
         marginTop: 5,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         color: colors.secondaryColorDarker
     },
     value:{
@@ -44,28 +44,28 @@ const styles = StyleSheet.create({
         color: colors.turquoiseColor
     },
     symbol:{
-        position:'absolute',
+        position:"absolute",
         bottom:0,
         right:0,
         fontSize: 12,
         marginTop: 45,
-        fontWeight: 'bold',
+        fontWeight: "bold",
         color: colors.secondaryColorDarker
     },
     overlap:{
-        position: 'absolute',
+        position: "absolute",
         top: 0,
         right: 0,
         backgroundColor: colors.primaryColor,
-        width:'60%',
-        height: '100%',
+        width:"60%",
+        height: "100%",
         borderRadius: 15,
-        justifyContent: 'center',
+        justifyContent: "center",
         padding: 15
     },  
     overlapText:{
         color: colors.white,
-        textAlign:'center',
+        textAlign:"center",
         fontSize: 16
     },
 });

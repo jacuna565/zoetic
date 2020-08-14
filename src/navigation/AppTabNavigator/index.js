@@ -1,13 +1,13 @@
-import React from 'react';
-import {Text, View } from 'react-native';
-import _ from 'lodash';
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import Icon from 'react-native-vector-icons/AntDesign';
-import HomeStack from '../stackNavigators/Home';
-import VitalsStack from '../stackNavigators/Vitals';
-import DoctorStack from '../stackNavigators/Doctor';
+import React from "react";
+import {Text, View } from "react-native";
+import _ from "lodash";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { Icon } from "native-base";
+import HomeStack from "../stackNavigators/Home";
+import VitalsStack from "../stackNavigators/Vitals";
+import DoctorStack from "../stackNavigators/Doctor";
 
-import {colors} from '../../globals/styles';
+import {colors} from "../../globals/styles";
 
 const tabOpt = { 
     showIcon: true, 
@@ -23,8 +23,8 @@ const tabOpt = {
     }
 };
 
-const tabLabel = (label, color) => <View style={{alignItems: 'center'}}>
-            <Text style={[tabOpt.labelTitle,{color: color}]}>{(_.isEqual(label,'HomeStack')) ? 'Home' : (_.isEqual(label,'VitalsStack')) ? 'Vitals' : 'Doctor'}</Text>
+const tabLabel = (label, color) => <View style={{alignItems: "center"}}>
+            <Text style={[tabOpt.labelTitle,{color: color}]}>{(_.isEqual(label,"HomeStack")) ? "Home" : (_.isEqual(label,"VitalsStack")) ? "Vitals" : "Doctor"}</Text>
         </View>;
                 
 const Tab = createBottomTabNavigator();
@@ -32,14 +32,14 @@ const Tab = createBottomTabNavigator();
 function AppTabNavigator(){
     return (
         <Tab.Navigator
-            initialRouteName='VitalsStack'
+            initialRouteName="VitalsStack"
             screenOptions={({ route }) => ({
                 tabBarLabel: ({color}) => {
                     return tabLabel(route.name, color);
                 },
                 tabBarIcon: ({ focused, color }) => {
-                    let iconName = (_.isEqual(route.name,'HomeStack')) ? 'home' : (_.isEqual(route.name,'VitalsStack')) ? 'barschart' : 'medicinebox';
-                    return <Icon name={iconName} style={{color:(focused) ? color : colors.secondaryColor, fontSize: 24}}/>
+                    let iconName = (_.isEqual(route.name,"HomeStack")) ? "home" : (_.isEqual(route.name,"VitalsStack")) ? "barschart" : "medicinebox";
+                    return <Icon type="AntDesign" style={{color:(focused) ? color : colors.secondaryColor, fontSize: 24}} name={iconName} />
                 },
             })}
             tabBarOptions={{
@@ -49,9 +49,9 @@ function AppTabNavigator(){
                 inactiveBackgroundColor: colors.white
             }}
             >
-            <Tab.Screen name='HomeStack' component={HomeStack} />
-            <Tab.Screen name='VitalsStack' component={VitalsStack} />
-            <Tab.Screen name='DoctorStack' component={DoctorStack} />
+            <Tab.Screen name="HomeStack" component={HomeStack} />
+            <Tab.Screen name="VitalsStack" component={VitalsStack} />
+            <Tab.Screen name="DoctorStack" component={DoctorStack} />
         </Tab.Navigator>
     )
 }

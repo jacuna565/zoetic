@@ -1,14 +1,14 @@
 
-import React from 'react';
-import { View, Text } from 'react-native';
-import { LineChart, YAxis } from 'react-native-svg-charts';
-import * as shape from 'd3-shape';
-import { colors } from '../../globals/styles';
+import React from "react";
+import { View, Text } from "react-native";
+import { LineChart, YAxis } from "react-native-svg-charts";
+import * as shape from "d3-shape";
+import { colors } from "../../globals/styles";
 
 const Chart = ({data}) => {
     const contentInset = { top: 20, bottom: 20 }
     return (
-        <View style={{ height: '70%', flexDirection: 'row' }}>
+        <View style={{ height: "70%", flexDirection: "row" }}>
             <YAxis
                 data={data}
                 contentInset={contentInset}

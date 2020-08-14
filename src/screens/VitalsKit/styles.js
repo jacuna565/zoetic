@@ -3,7 +3,7 @@ import { colors } from "../../globals/styles";
 const styles = StyleSheet.create({
     container:{
         backgroundColor: colors.white,
-        height: '100%',
+        height: "100%",
         padding: 25
     },
 });

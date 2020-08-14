@@ -1,5 +1,5 @@
-import React from 'react';
-import { Text } from 'react-native';
+import React from "react";
+import { Text } from "react-native";
 import { Grid } from "react-native-easy-grid";
 
 const Camera = () => {

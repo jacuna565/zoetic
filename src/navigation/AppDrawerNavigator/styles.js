@@ -5,18 +5,18 @@ const styles = StyleSheet.create({
         marginLeft: -5
     },
     icon:{
-        color: '#8b19be',
+        color: "#8b19be",
         fontSize: 24
     },
     drawerLabel:{
-        color:'#8b19be',
+        color:"#8b19be",
         fontSize: 16,
         marginTop: 4,
         marginLeft: 10
     },
     drawerCloseContainer:{
-        display: 'flex', 
-        alignSelf: 'flex-end', 
+        display: "flex", 
+        alignSelf: "flex-end", 
         padding: 15
     },
     drawerFooter:{
@@ -25,7 +25,7 @@ const styles = StyleSheet.create({
         right: 10
     },
     drawerFooterText:{
-        color:'#8b19be',
+        color:"#8b19be",
         marginTop: 4,
         marginLeft: 10
     }
