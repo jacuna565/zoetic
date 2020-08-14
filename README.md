@@ -5,6 +5,21 @@ Drawer, Stacks and tabs navigators implemented in a simple 2 screen. Using **Rea
 ### Backend integration ###
 This develop has integration with [this](https://github.com/jacuna565/basic-nodejs-api-rest) ApiRest (already linked in the app)
 
+#### iPhone ####
+![iPhone Screen 1](src/assets/ios/screen1.png)
+
+![iPhone Screen 2](src/assets/ios/screen2.png)
+
+![iPhone Screen 2_1](src/assets/ios/screen2_1.png)
+
+#### Android ####
+
+![android Screen 1](src/assets/android/screen1.png)
+
+![android Screen 2](src/assets/android/screen2.png)
+
+![android Screen 2_1](src/assets/android/screen2_1.png)
+
 
 ##### *Note* #####
 Make sure to do your inital configurations on Android Studio or Xcode in order to run this well.
