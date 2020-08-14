@@ -59,7 +59,7 @@ function VitalsStack({navigation}) {
           ),
           headerLeft: () => (
             <Icon
-              style={styles.icon}
+              style={styles.iconInvert}
               onPress={() => navigation.navigate('Vitals')}
               type="Entypo"
               name="chevron-left"
@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   icon: {
     margin: 15,
     fontSize: 24,
-    color: colors.primaryColor,
+    color: colors.white,
   },
   headerTitle: {
     color: colors.white,
@@ -83,6 +83,11 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
   },
   headerTitleInvert: {
+    color: colors.primaryColor,
+  },
+  iconInvert: {
+    margin: 15,
+    fontSize: 24,
     color: colors.primaryColor,
   },
 });

@@ -29,7 +29,7 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
   },
   category: {
-    fontSize: 14,
+    fontSize: 12,
     marginLeft: 5,
     marginTop: 5,
     fontWeight: 'bold',
