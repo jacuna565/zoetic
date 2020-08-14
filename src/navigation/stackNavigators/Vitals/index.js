@@ -75,7 +75,7 @@ const styles = StyleSheet.create({
   icon: {
     margin: 15,
     fontSize: 24,
-    color: colors.white,
+    color: colors.primaryColor,
   },
   headerTitle: {
     color: colors.white,
