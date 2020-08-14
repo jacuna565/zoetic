@@ -1,7 +1,7 @@
-import measurementActions from "./measurementActions";
+import measurementActions from './measurementActions';
 
 const allActions = {
-    measurementActions,
-}
+  measurementActions,
+};
 
-export default allActions
+export default allActions;

@@ -1,8 +1,8 @@
-import {combineReducers} from "redux";
-import measurementReducer from "./measurementReducer";
+import {combineReducers} from 'redux';
+import measurementReducer from './measurementReducer';
 
 const rootReducer = combineReducers({
-    measurementReducer
-})
+  measurementReducer,
+});
 
-export default rootReducer
+export default rootReducer;
