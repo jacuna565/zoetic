@@ -20,16 +20,16 @@ const styles = StyleSheet.create({
     },
     cardItemContainer:{
         justifyContent:'center',
-        paddingLeft: 25,
-        paddingRight: 25,
+        paddingLeft: 20,
+        paddingRight: 20,
     },
     cardItem:{
         flexWrap: 'wrap', 
         alignItems: 'flex-start',
-        flexDirection:'row'
+        flexDirection:'row',
     },
     category:{
-        fontSize: 16,
+        fontSize: 14,
         marginLeft: 5,
         marginTop: 5,
         fontWeight: 'bold',

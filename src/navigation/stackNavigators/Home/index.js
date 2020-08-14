@@ -15,7 +15,7 @@ function HomeStack({ navigation }){
                 name='Home'
                 component={Home}
                 options={{
-                    headerTitle:() => <Text>Tituloooo</Text>,
+                    headerTitle:() => <Text>Home</Text>,
                     headerLeft: () => 
                         <Icon
                             style={{ margin: 15}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}

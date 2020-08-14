@@ -1,5 +1,6 @@
 import React from 'react';
-import {Text, View, Image, TouchableOpacity} from 'react-native';
+import {Text, View } from 'react-native';
+import _ from 'lodash';
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import Icon from 'react-native-vector-icons/AntDesign';
 import HomeStack from '../stackNavigators/Home';
@@ -23,7 +24,7 @@ const tabOpt = {
 };
 
 const tabLabel = (label, color) => <View style={{alignItems: 'center'}}>
-            <Text style={[tabOpt.labelTitle,{color: color}]}>{label}</Text>
+            <Text style={[tabOpt.labelTitle,{color: color}]}>{(_.isEqual(label,'HomeStack')) ? 'Home' : (_.isEqual(label,'VitalsStack')) ? 'Vitals' : 'Doctor'}</Text>
         </View>;
                 
 const Tab = createBottomTabNavigator();
@@ -37,7 +38,7 @@ function AppTabNavigator(){
                     return tabLabel(route.name, color);
                 },
                 tabBarIcon: ({ focused, color }) => {
-                    let iconName = (route.name === 'HomeStack') ? 'home' : (route.name === 'VitalsStack') ? 'barschart' : 'medicinebox';
+                    let iconName = (_.isEqual(route.name,'HomeStack')) ? 'home' : (_.isEqual(route.name,'VitalsStack')) ? 'barschart' : 'medicinebox';
                     return <Icon name={iconName} style={{color:(focused) ? color : colors.secondaryColor, fontSize: 24}}/>
                 },
             })}

@@ -15,7 +15,7 @@ function DoctorStack({ navigation }){
                 name='Doctor'
                 component={Doctor}
                 options={{
-                    headerTitle:() => <Text >Tituloooo</Text>,
+                    headerTitle:() => <Text >Doctor</Text>,
                     headerLeft: () => 
                         <Icon
                             style={{ margin: 15}} onPress={() => navigation.dispatch(DrawerActions.openDrawer())}

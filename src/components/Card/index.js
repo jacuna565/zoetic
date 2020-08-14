@@ -1,6 +1,6 @@
 import React from 'react';
 import { Text, View } from 'react-native';
-import { Grid, Row, Col } from "react-native-easy-grid";
+import _ from 'lodash';
 import Icon from 'react-native-vector-icons/FontAwesome';
 import Icon2 from 'react-native-vector-icons/FontAwesome5';
 import Icon3 from 'react-native-vector-icons/Fontisto';
@@ -40,7 +40,7 @@ const Card = (props) => {
 
     const getChartValues = () =>{
         let range = [];
-        let value = (type === 1) ? element.temperature : (type === 2) ? element.oximeter[1] : element.blood[0]
+        let value = (_.isEqual(type,1)) ? element.temperature : (_.isEqual(type,2)) ? element.oximeter[1] : element.blood[0]
         let aux;
         for(let i=0; i<=type; i++){
             range.push(parseFloat(value))
@@ -54,7 +54,7 @@ const Card = (props) => {
 
     const getFirstValue = () =>{
         let value='';
-        value = (type === 1) ? temperature : (type === 2) ? oximeter[0] : blood[0]
+        value = (_.isEqual(type,1)) ? temperature : (_.isEqual(type,2)) ? oximeter[0] : blood[0]
         return value;
     }
 
@@ -65,12 +65,12 @@ const Card = (props) => {
                 {getIconTitle()}
                 <Chart data={getChartValues()}/>
                 <View style={styles.info}>
-                    <Text style={styles.infoTextBig}>{getFirstValue()}{(type===3) && <Text style={{color:colors.white}}>/<Text style={{color:'red'}}>{blood[1]}</Text></Text>}<Text style={{fontSize: 12}}>{(type === 1) ? '°F' : (type === 2) ? '%' : 'mmHG'}</Text></Text>
-                    {(type === 2) && <Text style={styles.infoTextBig}> {oximeter[1]}<Text style={{fontSize: 12}}>bpm</Text></Text>}
+                    <Text style={styles.infoTextBig}>{getFirstValue()}{(_.isEqual(type,3)) && <Text style={{color:colors.white}}>/<Text style={{color:'red'}}>{blood[1]}</Text></Text>}<Text style={{fontSize: 12}}>{(_.isEqual(type,1)) ? '°F' : (_.isEqual(type,2)) ? '%' : 'mmHG'}</Text></Text>
+                    {(_.isEqual(type,2)) && <Text style={styles.infoTextBig}> {oximeter[1]}<Text style={{fontSize: 12}}>bpm</Text></Text>}
                 </View>
                 </>
             }
-            {(type === 4) && <View style={styles.titleContainerCentered}><Icon4 style={styles.iconTitleInvert} name='face-recognition'/><Text style={styles.textTitleInvert}>face-recognition</Text></View>}
+            {(_.isEqual(type,4)) && <View style={styles.titleContainerCentered}><Icon4 style={styles.iconTitleInvert} name='face-recognition'/><Text style={styles.textTitleInvert}>face-recognition</Text></View>}
         </View>
     </View>
     );    

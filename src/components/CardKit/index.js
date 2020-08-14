@@ -12,24 +12,29 @@ const CardKit = (props) => {
     const [value, setValue] = useState(0);
     const [secondValue, setSecondValue] = useState(0);
     const [loader, setLoader] = useState(false);
-    const {type, element, message, showButton } = props;
-    let icon;
+    const {type, symbol, message, showButton, processValues } = props;
 
-    // not necessary if I had a single font icons
-    // just for this case doing this:
-    const getIcon = () =>{
+    const getIconTitle = () =>{
+        let icon;
+        let text;
         switch(type){
             case 1:
                 icon = <Icon style={styles.icon} name='thermometer'/>
+                text = <Text style={styles.category}>Temperature</Text>
             break;
             case 2:
                 icon = <Icon2 style={styles.icon} name='blood-drop'/>
+                text = <Text style={styles.category}>Blood</Text>
             break;
             case 3:
                 icon = <Icon3 style={styles.icon} name='lungs'/>
+                text = <Text style={styles.category}>Oximeter</Text>
             break;
         }
-        return (icon)
+        return (<View style={styles.cardItem}>
+            {icon}
+            {text}
+        </View>)
     }
 
     const calculate = () =>{
@@ -53,10 +58,8 @@ const CardKit = (props) => {
             showButton(true)
             setValue(calc);
             (type != 1) && setSecondValue(secondCalc)
+            processValues([calc.toString(), secondCalc.toString()], type);
         }, 1500);
-
-        
-
     }
 
     const getSecondValue = () =>{
@@ -68,30 +71,27 @@ const CardKit = (props) => {
     return (<TouchableOpacity style={styles.container} onPress={() => calculate()}>
         <View style={styles.card}>
             <Loader show={loader}/>
-            <View style={[styles.cardItemContainer,{width:'35%'}]}>
-                <View style={styles.cardItem}>
-                    {getIcon()}
-                    <Text style={styles.category}>{element.category}</Text>
-                </View>
+            <View style={[styles.cardItemContainer,{width:'40%'}]}>
+                {getIconTitle()}
             </View>
             {(type != 3)
-            ? <View style={[styles.cardItemContainer,{width:'65%', alignItems:'flex-end'}]}>
+            ? <View style={[styles.cardItemContainer,{width:'60%', alignItems:'flex-end'}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{value}{(secondValue != 0) && getSecondValue()}</Text>
-                    <Text style={styles.symbol}>{element.symbol}</Text>
+                    <Text style={styles.symbol}>{symbol}</Text>
                 </View>
             </View>
             :<>
-            <View style={[styles.cardItemContainer,{width:'32%', alignItems:'flex-end'}]}>
+            <View style={[styles.cardItemContainer,{width:'30%', alignItems:'flex-end'}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{value}</Text>
-                    <Text style={styles.symbol}>{(element.symbol.split(' ')[0])}</Text>
+                    <Text style={styles.symbol}>{(symbol.split(' ')[0])}</Text>
                 </View>
             </View>
-            <View style={[styles.cardItemContainer,{width:'32%', alignItems:'flex-end'}]}>
+            <View style={[styles.cardItemContainer,{width:'30%', alignItems:'flex-end'}]}>
                 <View style={styles.cardItem}>
                     <Text style={styles.value}>{getSecondValue()}</Text>
-                    <Text style={styles.symbol}>{(element.symbol.split(' ')[1])}</Text>
+                    <Text style={styles.symbol}>{(symbol.split(' ')[1])}</Text>
                 </View>
             </View>
             </>

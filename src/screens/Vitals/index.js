@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import {useSelector} from 'react-redux';
-import { Text, StatusBar, View, ScrollView, Dimensions } from 'react-native';
+import { useSelector } from 'react-redux';
+import { Text, StatusBar, View, ScrollView } from 'react-native';
 import { Grid, Row, Col } from "react-native-easy-grid";
+import _ from 'lodash';
 import Icon from 'react-native-vector-icons/MaterialIcons';
 import moment from "moment";
 import { colors } from '../../globals/styles';
@@ -16,15 +17,19 @@ const DEFAULT_SELECTED = {
     temperature: 0
 }
 
-const Vitals = () => {
+const Vitals = ({route}) => {
     const [selectedDate, setSelectedDate] = useState(moment(new Date()).format('MM/DD/YYYY'));
     const [itemFound, setItemFound] = useState(false);
     const [selectedDay, setSelectedDay] = useState(DEFAULT_SELECTED);
 
     const measurementReducer = useSelector(state => state.measurementReducer);
+
     useEffect(()=>{
         getInfoSelectedDay(selectedDate)
     },[selectedDay])
+    useEffect(()=>{
+        getInfoSelectedDay(moment(new Date()).format('MM/DD/YYYY'))
+    },[route.params])
 
     const handleDateSelected = (date) =>{
         setSelectedDate(date);
@@ -34,8 +39,8 @@ const Vitals = () => {
     const getInfoSelectedDay = (selectedDate) =>{
         let measurements = measurementReducer.measurements;
         setItemFound(false);
-        measurements.map((item) => {
-            if(selectedDate === item.registrationDate){
+        (!_.isEmpty(measurements)) && measurements.map((item) => {
+            if(_.isEqual(selectedDate,item.registrationDate)){
                 setSelectedDay(item);
                 setItemFound(true);
             }
