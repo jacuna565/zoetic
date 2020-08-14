@@ -1,4 +1,4 @@
-import {StyleSheet} from 'react-native';
+import {StyleSheet, Platform} from 'react-native';
 import {colors} from '../../globals/styles';
 const styles = StyleSheet.create({
   container: {
@@ -24,22 +24,30 @@ const styles = StyleSheet.create({
   linearGradient: {
     alignItems: 'center',
     justifyContent: 'center',
-    borderRadius: 100,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    overflow: 'hidden',
     padding: 5,
     height: 'auto',
     width: 'auto',
   },
   textButton: {
-    backgroundColor: colors.whiteDarker,
+    backgroundColor: Platform.OS === 'ios' ? 'transparent': colors.whiteDarker,
     height: 75,
     width: 75,
-    borderRadius: 100,
+    borderBottomLeftRadius: 100,
+    borderBottomRightRadius: 100,
+    borderTopLeftRadius: 100,
+    borderTopRightRadius: 100,
+    overflow: 'hidden',
     textAlign: 'center',
     textTransform: 'uppercase',
     fontWeight: 'bold',
-    color: colors.primaryColor,
+    color: Platform.OS === 'ios' ? colors.white : colors.primaryColor,
     paddingTop: 25,
-    fontSize: 14,
+    fontSize: Platform.OS === 'ios' ? 12 : 14,
   },
 });
 export default styles;

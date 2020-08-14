@@ -1,5 +1,5 @@
 import React from 'react';
-import {Text, StyleSheet} from 'react-native';
+import {Text, StyleSheet, Platform} from 'react-native';
 import {DrawerActions} from '@react-navigation/native';
 import {createStackNavigator} from '@react-navigation/stack';
 import {Icon} from 'native-base';
@@ -20,6 +20,7 @@ function VitalsStack({navigation}) {
             backgroundColor: colors.primaryColor,
             elevation: 0,
             shadowOpacity: 0,
+            height: Platform.OS === 'ios' ? 120 : 60,
           },
           headerTitle: () => <Text style={styles.headerTitle}>Vitals</Text>,
           headerLeft: () => (
@@ -51,6 +52,7 @@ function VitalsStack({navigation}) {
             backgroundColor: colors.white,
             elevation: 0,
             shadowOpacity: 0,
+            height: Platform.OS === 'ios' ? 120 : 60,
           },
           headerTitle: () => (
             <Text style={[styles.headerTitle, styles.headerTitleInvert]}>
