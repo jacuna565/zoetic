@@ -18,8 +18,8 @@ Make sure to do your inital configurations on Android Studio or Xcode in order t
 
 ### Installing ###
 ```
-$ git clone https://github.com/YOUR-USERNAME/vitals-app.git
-$ git cd vitals-app.git
+$ git clone https://github.com/YOUR-USERNAME/zoetic.git
+$ git cd zoetic.git
 $ git npm install
 ```
 
